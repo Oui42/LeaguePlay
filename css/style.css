@@ -29,6 +29,10 @@ a {
 	text-decoration: none;
 }
 
+a:hover {
+	color: #00a0ea;
+}
+
 button, input, textarea {
 	outline: none;
 }
@@ -45,6 +49,11 @@ input {
 	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
 	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
 	border-image-slice: 1;
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px #15446b solid;
 }
 
 .container {
@@ -98,6 +107,7 @@ input {
 	-webkit-border-image: -webkit-linear-gradient(top, #07c3bb 0%, #006c8f 100%);
 	border-image: linear-gradient(to bottom, #07c3bb 0%, #006c8f 100%);
 	border-image-slice: 1;
+	color: #d8cfbd;
 }
 
 .btn-active {
@@ -112,6 +122,10 @@ input {
 	padding: 10px;
 	letter-spacing: 2px;
 	cursor: pointer;
+}
+
+.btn-active:hover {
+	color: #d8cfbd;
 }
 
 .btn-golden {
@@ -222,14 +236,17 @@ input {
 }
 
 .points {
-	line-height: 40px;
 	font-size: 14px;
-	margin-right: 30px;
 }
 
 .points > .points-image {
 	vertical-align: middle;
 	margin-top: -5px;
+}
+
+.user-info > .points {
+	margin-right: 30px;
+	line-height: 40px;
 }
 
 .user-info > .btn {
@@ -285,8 +302,138 @@ input {
 }
 
 #footer {
-	margin-top: 20px;
+	margin: 20px 0 20px 0;
 	text-align: center;
 	font-size: 12px;
 	letter-spacing: 1px;
+}
+
+.clear {
+	clear: both;
+}
+
+.home-left {
+	float: left;
+	width: 70%;
+}
+
+.home-right {
+	float: right;
+	width: calc(30% - 30px);
+	margin-left: 30px;
+}
+
+.news {
+	border-bottom: 1px #15446b solid;
+}
+
+.news-head {
+	line-height: 40px;
+	height: 40px;
+}
+
+.news-title {
+	float: left;
+	font-size: 24px;
+	font-family: 'Beaufort-Bold';
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.news-date {
+	float: right;
+	font-size: 12px;
+}
+
+.news-text {
+	float: left;
+	width: 70%;
+}
+
+.news-image {
+	float: right;
+	margin: 50px 30px 0px 30px;
+}
+
+.news-button {
+	text-align: center;
+	line-height: 50px;
+}
+
+.news-button > .btn-active {
+	font-size: 15px;
+	padding: 5px;
+}
+
+.panel {
+	background-color: #000912;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
+	border-image-slice: 1;
+	margin-bottom: 10px;
+}
+
+.panel-head {
+	font-size: 24px;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Beaufort-Bold';
+	letter-spacing: 2px;
+	border-bottom: 1px #15446b solid;
+	line-height: 40px;
+}
+
+.panel-body {
+	padding: 10px;
+}
+
+.home-tournaments-name {
+	float: left;
+}
+
+.home-tournaments-info {
+	float: right;
+	font-size: 14px;
+}
+
+.home-tournaments-info > .points {
+	margin-right: 10px;
+}
+
+.matches-user1 {
+	float: left;
+}
+
+.matches-user2 {
+	float: right;
+	margin-top: -33px;
+}
+
+.matches-vs {
+	float: left;
+	margin: -26px 50% 0 45%;
+	text-align: center;
+}
+
+.home-matches-user > .avatar {
+	width: 20px;
+	height: 20px;
+	margin-top: -3px;
+	vertical-align: middle;
+	background-color: #000912;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
+	border-image-slice: 1;
+}
+
+.home-matches-user > .nickname {
+	margin-left: 5px;
+	line-height: 32px;
+	color: #d8cfbd;
+	letter-spacing: 1px;
+	font-size: 12px;
 }
