@@ -51,6 +51,10 @@ input {
 	border-image-slice: 1;
 }
 
+input::placeholder {
+	font-family: 'Beaufort-Italic';
+}
+
 hr {
 	border: 0;
 	border-bottom: 1px #15446b solid;
@@ -100,6 +104,7 @@ hr {
 	padding: 10px;
 	letter-spacing: 2px;
 	cursor: pointer;
+	font-family: 'Beaufort-Regular';
 }
 
 .btn:hover {
@@ -122,6 +127,7 @@ hr {
 	padding: 10px;
 	letter-spacing: 2px;
 	cursor: pointer;
+	font-family: 'Beaufort-Regular';
 }
 
 .btn-active:hover {
@@ -140,6 +146,7 @@ hr {
 	padding: 10px;
 	letter-spacing: 2px;
 	cursor: pointer;
+	font-family: 'Beaufort-Regular';
 }
 
 #header {
@@ -270,6 +277,18 @@ hr {
 	margin-left: 6px;
 }
 
+.guest-menu {
+	text-align: right;
+}
+
+.guest-menu > .btn-active, .guest-menu > .btn-golden {
+	line-height: 50px;
+	padding: 5px;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: 'Beaufort-Bold';
+}
+
 #content {
 	background-color: rgba(0,0,0,0.42);
 	margin: 0 auto;
@@ -306,6 +325,10 @@ hr {
 	text-align: center;
 	font-size: 12px;
 	letter-spacing: 1px;
+}
+
+.form-group {
+	margin-bottom: 1rem;
 }
 
 .clear {
@@ -389,6 +412,23 @@ hr {
 	padding: 10px;
 }
 
+.popup-panel {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.popup-panel input[type="text"], .popup-panel input[type="email"], .popup-panel input[type="password"] {
+	width: 60%
+}
+
+.panel-body > .btn-golden {
+	padding: 5px;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: 'Beaufort-Bold';
+}
+
 .home-tournaments-name {
 	float: left;
 }
@@ -436,4 +476,43 @@ hr {
 	color: #d8cfbd;
 	letter-spacing: 1px;
 	font-size: 12px;
+}
+
+.matches-vs > a, .news-title > a, .home-tournaments-name > a, .guest-menu > a {
+	color: #d8cfbd;
+}
+
+.alert {
+	margin: 0 auto;
+	padding: 15px;
+	width: 50%;
+	background-color: #000912;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
+	border-image-slice: 1;
+	margin-bottom: 10px;
+}
+
+.alert-title {
+	letter-spacing: 1px;
+	font-family: 'Beaufort-Bold';
+	margin-bottom: 1rem;
+}
+
+.alert-warning > .alert-title {
+	color: #ffc24d;
+}
+
+.alert-error > .alert-title {
+	color: #f35151;
+}
+
+.alert-success > .alert-title {
+	color: #57e53b;
+}
+
+.alert-info > .alert-title {
+	color: #3bbfe5;
 }
