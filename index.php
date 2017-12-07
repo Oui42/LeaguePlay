@@ -14,9 +14,29 @@ if(empty($section)) $section = 'index';
 
 $path = 'source'."/".$app."/".$module."/".$section.".php";
 
-if(file_exists($path))
+if($app == "admin") {
+	if(!isset($user['uid']) || $user['perms'] < $__perms['admin']) {
+		alert("error", "You don't have permission to access this page.");
+		include 'overall/footer.php';
+		die();
+	}
+}
+
+/*if($app == "user" && $module != "session") {
+	if(!isset($user['uid'])) {
+		header("Location: index.php?app=user&module=session&section=login");
+	}
+}*/
+
+if(file_exists($path)) {
+	if(isset($user['uid']) && $user['perms'] >= $__perms['admin'] && $app == "admin")
+		include 'source/admin/main/admin-menu.php';
+
 	include($path);
-else
+
+	if(isset($user['uid']) && $user['perms'] >= $__perms['admin'] && $app == "admin")
+		include 'source/admin/main/admin-footer.php';
+} else
 	alert("warning", "Page doesn't exist!");
 
 include 'overall/footer.php';

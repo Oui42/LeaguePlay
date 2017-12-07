@@ -41,7 +41,7 @@ if(isset($_POST['submitRegister'])) {
 		$code = substr(md5(time()), 0, 30);
 		$ip = $_SERVER['REMOTE_ADDR'];
 
-		mysqli_query($connect, "INSERT INTO `lp_users` (nickname, password, salt, code, register_date, ip, email, points)
+		query("INSERT INTO `lp_users` (nickname, password, salt, code, register_date, ip, email, points)
 			VALUES('".$nickname."', '".$insertpassword."', '".$salt."', '".$code."', '".time()."', '".$ip."', '".$email."', '".$__globalSettings['startPoints']."')")
 			or die(mysqli_error($connect));
 		$id = mysqli_insert_id($connect);

@@ -3,7 +3,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/style.css">
+		<?php if(isset($user['uid']) && $user['perms'] >= $__perms['admin']) { ?>
+			<link rel="stylesheet" href="css/admin.css">
+		<?php } ?>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<title>LeaguePlay.net</title>
 	</head>
 	<body>
@@ -38,6 +42,9 @@
 						<span class="points"><?php echo $user['points']; ?><img src="images/points.png" alt="points" class="points-image"></span>
 						<button class="btn"><i class="fa fa-comments"></i></button>
 						<a href="" class="option-link"><i class="fa fa-cog"></i></a>
+						<?php if($user['perms'] >= $__perms['admin']) { ?>
+							<a href="index.php?app=admin" class="option-link"><i class="fa fa-cog fa-spin" style="color: #f35151;"></i></a>
+						<?php } ?>
 						<a href="index.php?app=user&module=session&section=logout" class="option-link"><i class="fa fa-sign-out"></i></a>
 					</div>
 				<?php } else { ?>

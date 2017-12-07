@@ -51,6 +51,23 @@ input {
 	border-image-slice: 1;
 }
 
+textarea {
+	margin: 0;
+	width: 100%;
+	min-height: 100px;
+	resize: vertical;
+	padding: 7px;
+	color: #d8cfbd;
+	font-size: 16px;
+	font-family: 'Beaufort-Regular';
+	background-color: #000912;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
+	border-image-slice: 1;
+}
+
 input::placeholder {
 	font-family: 'Beaufort-Italic';
 }
@@ -165,6 +182,10 @@ hr {
 
 .header-menu {
 	float: right;
+}
+
+.header-menu > .btn, .header-menu > .btn-active {
+	margin-left: 5px;
 }
 
 #user-menu {
@@ -515,4 +536,49 @@ hr {
 
 .alert-info > .alert-title {
 	color: #3bbfe5;
+}
+
+.new-sign {
+	background-color: #701010;
+	border: 1px #880909 solid;
+	border-radius: 3px;
+	padding: 0 4px;
+	font-family: 'Beaufort-Bold';
+	font-size: 12px;
+}
+
+.table-td > a {
+	color: #d8cfbd;
+}
+
+.table {
+	border-collapse: collapse;
+	background-color: #000912;
+	border: 1px #086b86 solid;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.table-tr {
+	border: 1px #086b86 solid;
+}
+
+.table-tr:hover {
+	background-color: #1e2328;
+}
+
+.table-th {
+	font-family: 'Beaufort-Bold';
+	text-align: center;
+	padding: 5px;
+	border: 1px #086b86 solid;
+}
+
+.table-td {
+	padding: 5px;
+	border: 1px #086b86 solid;
+}
+
+.text-center {
+	text-align: center;
 }
