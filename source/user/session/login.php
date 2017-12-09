@@ -18,7 +18,12 @@ if(isset($_POST['submitLogin'])) {
 		if(mysqli_num_rows($query) > 0) {
 			$user = mysqli_fetch_assoc($query);
 
-			$_SESSION['nickname'] = $nickname;
+			if($__SETTINGS['active_page'] == 0 && $user['perms'] < $__perms['admin']) {
+				alert("error", "We are currently off. Please come back later.");
+				include("overall/footer.php");
+				die();
+			}
+
 			$_SESSION['uid'] = $user['uid'];
 			header("Location: index.php");
 		} else {
@@ -34,11 +39,11 @@ if(isset($_POST['submitLogin'])) {
 	<div class="panel-body">
 		<div class="form-group">
 			<label for="nickname">Nickname</label><br>
-			<input id="nickname" type="text" name="nickname" placeholder="Type your nickname...">
+			<input id="nickname" type="text" name="nickname" maxlength="32" placeholder="Type your nickname...">
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label><br>
-			<input id="password" type="password" name="password" placeholder="Type your password...">
+			<input id="password" type="password" name="password" maxlength="32" placeholder="Type your password...">
 		</div>
 		<button class="btn-active" type="submit" name="submitLogin">
 			Sing In

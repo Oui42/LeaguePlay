@@ -1,4 +1,6 @@
 <?php
+$active_menu = "users-list";
+
 $list = array();
 $sql = "SELECT * FROM `lp_users` ORDER BY `uid` ASC";
 $query = query($sql);
@@ -17,6 +19,9 @@ if(mysqli_num_rows($query) > 0) {
 if(!empty($list)) {
 ?>
 
+<div class="panel-head">
+	Users list
+</div>
 <table class="table">
 	<tr class="table-tr">
 		<th class="table-th" width="60">ID</th>

@@ -11,8 +11,21 @@ function vtxt($var) {
 
 function row($query) {
 	global $connect;
-	return mysqli_fetch_assoc(mysqli_query($connect, $query)); 
+	return mysqli_fetch_assoc(query($query)); 
 }
+
+function getSettings() {
+	$sql = "SELECT * FROM `lp_settings`";
+	$query = query($sql);
+	$ret = array();
+	
+	while($row = mysqli_fetch_array($query)) {
+		$ret[$row['name']] = $row['value'];
+	}
+	return $ret;
+}
+
+$__SETTINGS = getSettings();
 
 function getUser($uid) {
 	if(isset($uid) && is_numeric($uid)) {
@@ -25,6 +38,15 @@ function getUser($uid) {
 
 if(isset($_SESSION['uid'])) {
 	$user = getUser($_SESSION['uid']);
+}
+
+function getNews($id) {
+	if(isset($id) && is_numeric($id)) {
+		$ret = row("SELECT * FROM `lp_news` WHERE id = '".$id."' LIMIT 1");
+		return $ret;
+	} else {
+		return array();
+	}
 }
 
 function alert($type, $text) {

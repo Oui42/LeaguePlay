@@ -8,18 +8,20 @@
 		<?php } ?>
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/ckeditor/ckeditor.js"></script>
 		<title>LeaguePlay.net</title>
 	</head>
 	<body>
 		<div id="header">
 			<div class="container">
 				<a href="index.php"><img src="images/logo.png" alt="logo" class="logo"></a>
+				<?php if($__SETTINGS['active_page'] == 0 && isset($user['uid']) && $user['perms'] >= $__perms['admin']) echo "<span style='color: red; font-size: 30;'>OFF</span>"; ?>
 				<div class="header-menu">
 					<a href="index.php" class="btn-active">Home</a>
 					<a href="" class="btn">Tournaments</a>
 					<a href="" class="btn">Matches</a>
 					<a href="" class="btn">Ranking</a>
-					<a href="" class="btn">FAQ</a>
+					<a href="index.php?app=main&module=main&section=faq" class="btn">FAQ</a>
 				</div>
 			</div>
 		</div>
@@ -55,3 +57,25 @@
 				<?php } ?>
 			</div>
 			<div id="content">
+				<?php
+				if(!isset($_GET['app']) || (isset($_GET['app']) && ($_GET['app'] != "admin"))) {
+					if($__SETTINGS['active_info1'] && !empty($__SETTINGS['info_text1'])) {
+						echo '<div class="panel panel-body alert-info">';
+							echo '<div class="alert-title"><i class="fa fa-info-circle fa-lg"></i> Important information!</div>';
+							echo $__SETTINGS['info_text1'];
+						echo "</div>";
+					}
+					if($__SETTINGS['active_info2'] && !empty($__SETTINGS['info_text2'])) {
+						echo '<div class="panel panel-body alert-info">';
+							echo '<div class="alert-title"><i class="fa fa-info-circle fa-lg"></i> Important information!</div>';
+							echo $__SETTINGS['info_text2'];
+						echo "</div>";
+					}
+					if($__SETTINGS['active_info3'] && !empty($__SETTINGS['info_text3'])) {
+						echo '<div class="panel panel-body alert-info">';
+							echo '<div class="alert-title"><i class="fa fa-info-circle fa-lg"></i> Important information!</div>';
+							echo $__SETTINGS['info_text3'];
+						echo "</div>";
+					}
+				}
+				?>

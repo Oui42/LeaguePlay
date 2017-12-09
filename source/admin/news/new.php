@@ -1,5 +1,5 @@
 <?php
-$title = (isset($_POST['title']))? $_POST['title'] : "";
+$title = (isset($_POST['title']))? vtxt($_POST['title']) : "";
 $text = (isset($_POST['text']))? $_POST['text'] : "";
 
 if(isset($_POST['new'])) {
@@ -28,13 +28,16 @@ if(isset($_POST['new'])) {
 ?>
 
 <form method="post" action="" class="panel popup-panel">
+	<div class="panel-head">
+		Create new news
+	</div>
 	<div class="panel-body">
 		<div class="form-group">
 			<label for="title">Title</label><br>
-			<input id="title" type="text" name="title" placeholder="Type title..." value="<?php echo $title; ?>">
+			<input id="title" type="text" name="title" maxlength="32" placeholder="Type title..." value="<?php echo $title; ?>">
 		</div>
 		<div class="form-group">
-			<label for="password">Text</label><br>
+			<label for="text">Text</label><br>
 			<textarea id="text" name="text" placeholder="Type your text..."><?php echo $text; ?></textarea>
 		</div>
 		<button class="btn-active" type="submit" name="new">

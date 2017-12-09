@@ -12,6 +12,9 @@ if(mysqli_num_rows($query) > 0) {
 if(!empty($list)) {
 ?>
 
+<div class="panel-head">
+	News list
+</div>
 <table class="table">
 	<tr class="table-tr">
 		<th class="table-th" width="50">ID</th>

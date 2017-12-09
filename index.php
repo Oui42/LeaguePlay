@@ -22,11 +22,17 @@ if($app == "admin") {
 	}
 }
 
-/*if($app == "user" && $module != "session") {
+if(($__SETTINGS['active_page'] == 0 && isset($user['uid']) && $user['perms'] < $__perms['admin']) || ($__SETTINGS['active_page'] == 0 && !isset($user['uid']) && $section != "login")) {
+	alert("info", "We are currently off. Please come back later.");
+	include 'overall/footer.php';
+	die();
+}
+
+if($app == "user" && $module != "session") {
 	if(!isset($user['uid'])) {
 		header("Location: index.php?app=user&module=session&section=login");
 	}
-}*/
+}
 
 if(file_exists($path)) {
 	if(isset($user['uid']) && $user['perms'] >= $__perms['admin'] && $app == "admin")

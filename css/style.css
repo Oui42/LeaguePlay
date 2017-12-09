@@ -72,6 +72,54 @@ input::placeholder {
 	font-family: 'Beaufort-Italic';
 }
 
+.radio {
+	margin: 0.5rem;
+	font-size: 14px;
+}
+
+.radio input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+.radio input[type="radio"] + .radio-label:before {
+	content: '';
+	background: #575757;
+	border-radius: 100%;
+	border: 1px solid #575757;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	position: relative;
+	top: 4px;
+	margin-right: 4px;
+	vertical-align: top;
+	cursor: pointer;
+	text-align: center;
+	-webkit-transition: all 250ms ease;
+	transition: all 250ms ease;
+}
+
+.radio input[type="radio"]:checked + .radio-label:before {
+	background-color: #00a0ea;
+	box-shadow: inset 0 0 0 2px #575757;
+}
+
+.radio input[type="radio"]:focus + .radio-label:before {
+	outline: none;
+	border-color: #3197EE;
+}
+
+.radio input[type="radio"]:disabled + .radio-label:before {
+	box-shadow: inset 0 0 0 4px #f4f4f4;
+	border-color: #b4b4b4;
+	background: #b4b4b4;
+}
+
+.radio input[type="radio"] + .radio-label:empty:before {
+	margin-right: 0;
+}
+
 hr {
 	border: 0;
 	border-bottom: 1px #15446b solid;
@@ -443,6 +491,16 @@ hr {
 	width: 60%
 }
 
+.input-mini10 {
+	width: 10% !important;
+	text-align: center;
+}
+
+.input-mini20 {
+	width: 20% !important;
+	text-align: center;
+}
+
 .panel-body > .btn-golden {
 	padding: 5px;
 	font-size: 18px;
@@ -581,4 +639,159 @@ hr {
 
 .text-center {
 	text-align: center;
+}
+
+.togglebtn {
+	background-color: #000912;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%);
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%);
+	border-image-slice: 1;
+	font-size: 16px;
+	color: #d8cfbd;
+	padding: 5px;
+	letter-spacing: 2px;
+	cursor: pointer;
+	font-family: 'Beaufort-Regular';
+
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    transition: background 600ms ease, color 600ms ease;
+}
+
+input[type="radio"].toggle {
+	display: none;
+}
+
+input[type="radio"].toggle + label {
+	cursor: pointer;
+	min-width: 60px;
+}
+
+input[type="radio"].toggle + label:hover {
+	background: none;
+	color: #d8cfbd;
+}
+
+input[type="radio"].toggle + label:after {
+	background: #1a1a1a;
+	content: "";
+	height: 100%;
+	position: absolute;
+	top: 0;
+	-webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+	transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+	width: 100%;
+	z-index: -1;
+}
+
+input[type="radio"].toggle.toggle-left + label {
+	border-right: 0;
+}
+
+input[type="radio"].toggle.toggle-left + label:after {
+	left: 100%;
+}
+
+input[type="radio"].toggle.toggle-right + label {
+	margin-left: -5px;
+}
+
+input[type="radio"].toggle.toggle-right + label:after {
+	left: -100%;
+}
+
+input[type="radio"].toggle:checked + label {
+	background-color: #1e2328;
+	border: 1px solid transparent;
+	-moz-border-image: -moz-linear-gradient(top, #07c3bb 0%, #006c8f 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #07c3bb 0%, #006c8f 100%);
+	border-image: linear-gradient(to bottom, #07c3bb 0%, #006c8f 100%);
+	border-image-slice: 1;
+	font-size: 16px;
+	color: #d8cfbd;
+	padding: 5px;
+	letter-spacing: 2px;
+	cursor: pointer;
+	font-family: 'Beaufort-Regular';
+
+	-webkit-transition: color 200ms;
+	transition: color 200ms;
+}
+
+input[type="radio"].toggle:checked + label:after {
+	left: 0;
+}
+
+.ck-editor__top, .ck-sticky-panel, .ck-toolbar {
+	background-color: #000912 !important;
+}
+
+.ck-toolbar {
+	border: 1px solid transparent !important;
+	-moz-border-image: -moz-linear-gradient(top, #07c3bb 0%, #006c8f 100%) !important;
+	-webkit-border-image: -webkit-linear-gradient(top, #07c3bb 0%, #006c8f 100%) !important;
+	border-image: linear-gradient(to bottom, #07c3bb 0%, #006c8f 100%) !important;
+	border-image-slice: 1 !important;
+}
+
+.ck-editor__editable {
+	border: 1px #006c8f solid !important;
+}
+
+.ck-button:not(:hover):not(:focus):not(.ck-on) {
+	background-color: #000912 !important;
+	border: 1px solid transparent !important;
+	-moz-border-image: -moz-linear-gradient(top, #086b86 0%, #15446b 100%) !important;
+	-webkit-border-image: -webkit-linear-gradient(top, #086b86 0%, #15446b 100%) !important;
+	border-image: linear-gradient(to bottom, #086b86 0%, #15446b 100%) !important;
+	border-image-slice: 1 !important;
+	color: #d8cfbd !important;
+}
+
+.ck-button:hover:not(.ck-on) {
+	background-color: #1e2328 !important;
+	border: 1px solid transparent !important;
+	-moz-border-image: -moz-linear-gradient(top, #07c3bb 0%, #006c8f 100%) !important;
+	-webkit-border-image: -webkit-linear-gradient(top, #07c3bb 0%, #006c8f 100%) !important;
+	border-image: linear-gradient(to bottom, #07c3bb 0%, #006c8f 100%) !important;
+	border-image-slice: 1 !important;
+	color: #d8cfbd !important;
+	cursor: pointer !important;
+}
+
+.ck-list {
+	background-color: #000912 !important;
+	color: #d8cfbd !important;
+}
+
+.ck-list__item:focus, .ck-list__item:hover {
+	background-color: #1e2328 !important;
+	color: #d8cfbd !important;
+	cursor: pointer !important;
+}
+
+.ck-list__item_active {
+	background-color: #000912 !important;
+	color: #d8cfbd !important;
+}
+
+.ck-dropdown__panel {
+	border: 1px #006c8f solid !important;
+}
+
+.ck-reset_all, .ck-reset_all *, .ck-reset_all a, .ck-reset_all textarea {
+	color: #d8cfbd !important;
+}
+
+.ck-editor-toolbar .ck-button.ck-on {
+	background-color: #1e2328 !important;
+	border: 1px solid transparent !important;
+	-moz-border-image: -moz-linear-gradient(top, #ac915b 0%, #604927 100%) !important;
+	-webkit-border-image: -webkit-linear-gradient(top, #ac915b 0%, #604927 100%) !important;
+	border-image: linear-gradient(to bottom, #ac915b 0%, #604927 100%) !important;
+	border-image-slice: 1 !important;
+	color: #d8cfbd !important;
 }
