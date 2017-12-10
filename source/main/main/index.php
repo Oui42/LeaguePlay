@@ -1,3 +1,21 @@
+<?php
+$tournaments_list = array();
+$sql = "SELECT * FROM `lp_tournaments` WHERE `status` != '".$__tournament['deleted']."' ORDER BY `date` DESC LIMIT 5";
+$query = query($sql);
+if(mysqli_num_rows($query) > 0) {
+	while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+		if($row['status'] == $__tournament['started'])
+			$row['status_text'] = "<i class='fa fa-fw fa-play' style='color: #57e53b;'></i>";
+		else if($row['status'] == $__tournament['open'])
+			$row['status_text'] = "<i class='fa fa-fw fa-calendar-o'></i>";
+		else if($row['status'] == $__tournament['closed'])
+			$row['status_text'] = "<i class='fa fa-fw fa-calendar-check-o' style='color: #f35151;'></i>";
+
+		$tournaments_list[] = $row;
+	}
+}
+?>
+
 <div class="home-left">
 	<div class="news">
 		<div class="news-head">
@@ -44,40 +62,23 @@
 			Tournaments
 		</div>
 		<div class="panel-body">
-			<span class="home-tournaments-name"><a href="">Lorem Ipsum</a></span>
-			<span class="home-tournaments-info">
-				<span class="points">50 000<img src="images/points.png" alt="points" class="points-image"></span>
-				01-01-1970
-			</span>
-			<div class="clear"></div>
-			<hr>
-			<span class="home-tournaments-name"><a href="">Lorem Ipsum</a></span>
-			<span class="home-tournaments-info">
-				<span class="points">50 000<img src="images/points.png" alt="points" class="points-image"></span>
-				01-01-1970
-			</span>
-			<div class="clear"></div>
-			<hr>
-			<span class="home-tournaments-name"><a href="">Lorem Ipsum</a></span>
-			<span class="home-tournaments-info">
-				<span class="points">50 000<img src="images/points.png" alt="points" class="points-image"></span>
-				01-01-1970
-			</span>
-			<div class="clear"></div>
-			<hr>
-			<span class="home-tournaments-name"><a href="">Lorem Ipsum</a></span>
-			<span class="home-tournaments-info">
-				<span class="points">50 000<img src="images/points.png" alt="points" class="points-image"></span>
-				01-01-1970
-			</span>
-			<div class="clear"></div>
-			<hr>
-			<span class="home-tournaments-name"><a href="">Lorem Ipsum</a></span>
-			<span class="home-tournaments-info">
-				<span class="points">50 000<img src="images/points.png" alt="points" class="points-image"></span>
-				01-01-1970
-			</span>
-			<div class="clear"></div>
+			<?php
+			if(!empty($tournaments_list)) {
+				foreach($tournaments_list as $tl) {
+				?>
+					<span class="home-tournaments-name"><a href="index.php?app=main&module=tournaments&section=view&id=<?php echo $tl['tournament_id']; ?>"><?php echo $tl['name']; ?></a></span>
+					<span class="home-tournaments-info">
+						<span class="points"><?php echo $tl['award']; ?><img src="images/points.png" alt="points" class="points-image"></span>
+						<?php echo date('d-m H:i', $tl['date'])." ".$tl['status_text']; ?>
+					</span>
+					<div class="clear"></div>
+					<hr>
+				<?php
+				}
+			} else {
+				alert("info", "Tournaments list are empty.");
+			}
+			?>
 		</div>
 	</div>
 	<div class="panel">

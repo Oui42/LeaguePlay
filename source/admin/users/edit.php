@@ -30,6 +30,12 @@ if(isset($_GET['uid']) && is_numeric($_GET['uid'])) {
 				if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 					$error[] = "Email address is invalid format.";
 
+				if(!is_numeric($level))
+					$error[] = "Level must be numeric value.";
+
+				if(!is_numeric($points))
+					$error[] = "Points must be numeric value.";
+
 				if(mysqli_num_rows(query("SELECT `nickname` FROM `lp_users` WHERE `nickname` = '".$nickname."' AND `uid` != '".$_userid."'")) > 0)
 					$error[] = "This nickname is already taken.";
 
@@ -47,8 +53,16 @@ if(isset($_GET['uid']) && is_numeric($_GET['uid'])) {
 				echo "</div>";
 			}
 		}
+
+		if(isset($_POST['signin'])) {
+			$_SESSION['uid'] = $_userid;
+			header("Location: index.php");
+		}
 		?>
 		<form method="post" action="" class="panel popup-panel">
+			<div class="panel-head">
+				Edit user
+			</div>
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="nickname">Nickname</label><br>
@@ -87,6 +101,9 @@ if(isset($_GET['uid']) && is_numeric($_GET['uid'])) {
 				</div>
 				<button class="btn-active" type="submit" name="submit">
 					Save
+				</button>
+				<button class="btn btn-small" type="submit" name="signin">
+					Sign in
 				</button>
 			</div>
 		</form>

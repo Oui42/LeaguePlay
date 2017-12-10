@@ -34,6 +34,9 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 		}
 		?>
 		<form method="post" action="" class="panel popup-panel">
+			<div class="panel-head">
+				Edit news
+			</div>
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="title">Title</label><br>

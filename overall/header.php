@@ -1,3 +1,19 @@
+<?php
+if(isset($user['uid']) && $user['perms'] >= $__perms['admin']) {
+	$new_tickets = 0;
+	$sql = "SELECT * FROM `lp_tickets` WHERE `status` = '".$__ticketStatus['new']."'";
+	$query = query($sql);
+	if(mysqli_num_rows($query) > 0)
+		$new_tickets = 1;
+}
+
+$new_messages = 0;
+$sql = "SELECT * FROM `lp_messages` WHERE (`owner` = '".$user['uid']."' AND `status` = '".$__messages['newuser1']."') OR (`target` = '".$user['uid']."' AND `status` = '".$__messages['newuser2']."')";
+$query = query($sql);
+if(mysqli_num_rows($query) > 0)
+	$new_messages = 1;
+?>
+
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -6,6 +22,7 @@
 		<?php if(isset($user['uid']) && $user['perms'] >= $__perms['admin']) { ?>
 			<link rel="stylesheet" href="css/admin.css">
 		<?php } ?>
+			<link rel="stylesheet" href="css/profile.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="js/ckeditor/ckeditor.js"></script>
@@ -18,7 +35,7 @@
 				<?php if($__SETTINGS['active_page'] == 0 && isset($user['uid']) && $user['perms'] >= $__perms['admin']) echo "<span style='color: red; font-size: 30;'>OFF</span>"; ?>
 				<div class="header-menu">
 					<a href="index.php" class="btn-active">Home</a>
-					<a href="" class="btn">Tournaments</a>
+					<a href="index.php?app=main&module=tournaments" class="<?php echo (isset($_GET['module']) && ($_GET['module'] == "tournaments") && ($_GET['app'] != "admin"))? 'btn-active' : 'btn'; ?>">Tournaments</a>
 					<a href="" class="btn">Matches</a>
 					<a href="" class="btn">Ranking</a>
 					<a href="index.php?app=main&module=main&section=faq" class="btn">FAQ</a>
@@ -36,15 +53,21 @@
 						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
 					</form>
 					<div class="user-info">
-						<a href="" class="user-link">
+						<a href="index.php?app=user&module=main" class="user-link">
 							<img src="images/avatar.png" alt="avatar" class="avatar">
 							<span class="nickname"><?php echo $user['nickname']; ?></span>
 						</a>
 						<span class="level"><?php echo $user['level']; ?><img src="images/level.png" alt="level" class="level-image"></span>
 						<span class="points"><?php echo $user['points']; ?><img src="images/points.png" alt="points" class="points-image"></span>
-						<button class="btn"><i class="fa fa-comments"></i></button>
-						<a href="" class="option-link"><i class="fa fa-cog"></i></a>
-						<?php if($user['perms'] >= $__perms['admin']) { ?>
+						<?php if(empty($new_messages)) { ?>
+						<a href="index.php?app=user&module=messages" class="btn"><i class="fa fa-comments"></i></a>
+						<?php } else { ?>
+						<a href="index.php?app=user&module=messages" class="btn"><i class="fa fa-comments" style="color: #f35151;"></i></a>
+						<?php } ?>
+						<a href="index.php?app=user&module=settings" class="option-link"><i class="fa fa-cog"></i></a>
+						<?php if($user['perms'] >= $__perms['admin'] && empty($new_tickets)) { ?>
+							<a href="index.php?app=admin" class="option-link"><i class="fa fa-cog" style="color: #f35151;"></i></a>
+						<?php } else if($user['perms'] >= $__perms['admin'] && !empty($new_tickets)) { ?>
 							<a href="index.php?app=admin" class="option-link"><i class="fa fa-cog fa-spin" style="color: #f35151;"></i></a>
 						<?php } ?>
 						<a href="index.php?app=user&module=session&section=logout" class="option-link"><i class="fa fa-sign-out"></i></a>

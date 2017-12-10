@@ -4,10 +4,10 @@ $text = (isset($_POST['text']))? $_POST['text'] : "";
 
 if(isset($_POST['new'])) {
 	if(empty($title))
-		$error[] = "Please type news title..";
+		$error[] = "Please type news title.";
 
 	if(empty($text))
-		$error[] = "Please type news text..";
+		$error[] = "Please type news text.";
 
 	if(strlen($title) < 3 || strlen($title) > 32)
 		$error[] = "Title must be at least 3 and at most 32 characters.";
